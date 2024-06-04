@@ -1,16 +1,35 @@
-import { Box, Typography } from "@mui/material"
-
+import { HomeOutlined } from "@mui/icons-material";
+import { Box, Typography, Stack, Button } from "@mui/material"
+import { Link } from 'react-router-dom';
 const FourOFourPage = () => {
   return (
     <>
-      <Box sx={{ height: '100vh' }} display={"flex"} alignItems={"center"} justifyContent={"center"}>
+
+      <Stack sx={{height:"100vh"}} spacing={1} justifyContent='center' alignItems="center">
+        <img src="/not-found.gif" width="300px" height='300px' alt="" />
+        <Typography variant="h1" color="error" display={{xs:'none',md:'block'}}>
+            Page Not Found | 404
+        </Typography>
+        <Typography variant="h6" color="error"  display={{xs:'block',md:'none'}}>
+            Page Not Found | 404
+        </Typography>
         <Box>
-          <img src="/notfound.svg" width="100%" alt="" />
-          <Box>
-            <Typography variant="h2" sx={{textAlign:'center'}}>Page Not found!</Typography>
-          </Box>
+            <Link to="/" >
+                <Button
+                variant="outlined"
+                color="secondary"
+                sx={{py: 1, px: 2, bgcolor: 'white'}}
+                >
+                <Stack direction='row' spacing={1} justifyContent='center' alignItems='center'>
+                    <HomeOutlined />
+                    <Typography>
+                        Go back to home
+                    </Typography>                    
+                </Stack>                
+                </Button>
+            </Link>
         </Box>
-      </Box>
+    </Stack>
     </>
   )
 }

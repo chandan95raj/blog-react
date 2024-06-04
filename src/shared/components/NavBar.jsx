@@ -176,7 +176,8 @@ const NavBar = () => {
         </> :
         <>
           <MenuItem>
-            <Link to="/join"><Button variant="contained" color="primary"
+            <Link to="/join">
+              <Button variant="contained" color="primary"
               startIcon={<LogIn />}>
               Join
             </Button>
