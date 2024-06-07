@@ -1,7 +1,7 @@
 import { HomeOutlined } from "@mui/icons-material";
 import { Box, Typography, Stack, Button } from "@mui/material"
 import { Link } from 'react-router-dom';
-const NOT_FOUND = () => {
+const FourOFourPage = () => {
   return (
     <>
 
@@ -34,4 +34,4 @@ const NOT_FOUND = () => {
   )
 }
 
-export default NOT_FOUND
+export default FourOFourPage
