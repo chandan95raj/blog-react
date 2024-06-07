@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import {signInWithEmailAndPassword ,createUserWithEmailAndPassword ,GoogleAuthProvider,getAuth} from "firebase/auth"
+// TODO: Add SDKs for Firebase products that you want to use
 
 const firebaseConfig = {
   apiKey: "AIzaSyCK4IIfuOkwNTMYgA0Z-gHKUfLxejRlpek",
@@ -13,6 +14,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
 const auth = getAuth(app);
 // const analytics = getAnalytics(app);
 

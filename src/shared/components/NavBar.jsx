@@ -13,9 +13,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Edit2Icon, LayoutDashboard, LogIn, LogOut } from 'lucide-react';
 import { Button } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../modules/user/redux';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -60,8 +62,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const NavBar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const isAuthOrNot = useSelector((state) => state.user.isAuth)
 
-  const [isAuth, setIsAuth] = useState(false);
+  const logoutFn = () => {
+    dispatch(logout());
+    navigate("/");
+  }
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -108,11 +116,10 @@ const NavBar = () => {
         </Link>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <Link to="/logout"><Button variant="outlined" color="error"
+        <Button onClick={logoutFn} variant="outlined" color="error"
           startIcon={<LogOut />}>
           Logout
         </Button>
-        </Link>
       </MenuItem>
     </Menu>
   );
@@ -135,7 +142,7 @@ const NavBar = () => {
       onClose={handleMobileMenuClose}
     >
 
-      {isAuth ?
+      {isAuthOrNot ?
         <>
           <MenuItem>
             <IconButton
@@ -178,9 +185,9 @@ const NavBar = () => {
           <MenuItem>
             <Link to="/join">
               <Button variant="contained" color="primary"
-              startIcon={<LogIn />}>
-              Join
-            </Button>
+                startIcon={<LogIn />}>
+                Join
+              </Button>
             </Link>
           </MenuItem>
           <MenuItem>
@@ -214,7 +221,7 @@ const NavBar = () => {
               variant="h6"
               noWrap
               component="div"
-              sx={{ display: { xs: 'none', sm: 'block' },color:'#fff' }}
+              sx={{ display: { xs: 'none', sm: 'block' }, color: '#fff' }}
             >
               Blog
             </Typography>
@@ -231,7 +238,7 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: 'flex' }} alignItems={'center'}>
             {
-              isAuth ?
+              isAuthOrNot ?
                 <Box sx={{ display: { xs: 'none', md: 'flex' } }} alignItems={'center'}>
                   <Link to="/"><Typography variant="body1" sx={{ color: 'white' }}>Write</Typography></Link>
                   <IconButton

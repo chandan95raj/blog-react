@@ -1,6 +1,11 @@
+import { Typography } from "@mui/material"
+
 const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <>
+      <Typography variant="h1" color="primary" sx={{textAlign:'center'}}>
+        Homepage
+      </Typography></>
   )
 }
 
