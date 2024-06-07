@@ -21,7 +21,7 @@ const LoginPage = () => {
       }
         
     } catch (error) {
-      toast.error(error.message.toString())
+      toast.error(error)
       
     }
 
